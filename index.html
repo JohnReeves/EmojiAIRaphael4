@@ -1,0 +1,136 @@
+#1. Last Worksheet
+
+![Imgur](http://i.imgur.com/zK4xZhV.png)
+
+Find and open your JSFiddle link from last week - as we're going to be making a lot more emojis today!
+
+#2. Face Click
+
+First we're going to make it so we can click on our emoji face to "select" it. We've already got a click event on our reset button so our faceClick should look something like (write this below where we create the `faceShape`) :
+
+```js
+faceShape.click( function() {
+    
+    });
+```
+
+Next - we can change the attributes of our face shape when we click it to make it look selected - I've set mine to have a green outline like this:
+
+```js
+faceShape.attr("stroke-width", "5");
+faceShape.attr("stroke", "#8BC34A");
+```
+
+My code looks like this:
+
+![Imgur](http://i.imgur.com/BvBgrzZ.png)
+
+#3 Select and De-select
+
+Next we want to be able to deselect the shape - so we can add a property into our `emoji` of `selected`. Before we set the click function we know it's not selected:
+
+```js
+emoji.selected = false;
+```
+
+We can then change the stroke and stroke-width attributes between black and green like this:
+
+```js
+ if(emoji.selected == true){
+  //set not selected
+  faceShape.attr("stroke-width", "1");
+  faceShape.attr("stroke", "black");
+            
+  emoji.selected = false;
+} else {
+  //set selected
+  faceShape.attr("stroke-width", "5");
+  faceShape.attr("stroke", "#8BC34A");
+            
+  emoji.selected = true;
+}
+
+```
+
+My code looks like this:
+
+![Imgur](http://i.imgur.com/idKiT4l.png)
+
+#4. Selected Emojis Array
+
+We now need to save what emojis have been selected, we can do this by created a `selectedEmojis` array below where we create our `emojis` array:
+
+```js
+var selectedEmojis = [];
+```
+
+Then we can add the emoji when the user selects it
+
+```js
+selectedEmojis.push(emoji);
+```
+
+Removing an emoji is a little harder...
+
+#5. Removing from Array
+
+There's no "easy" way to remove items from an array - the only option we have in JavaScript is to `splice` - which means to cut something out. To do this we need to know the index of the thing we want to remove.
+
+To find the index we need to loop through all of our selected emojis and check if they match our current emoji like this :
+
+```js
+for (var i = 0; i < selectedEmojis.length; i++){
+  
+  if(emoji == selectedEmojis[i]){
+    //we want to remove this one!
+    
+  }
+}
+```
+
+As `i` currently holds our index, we can chose to `splice` from there like this:
+
+```js
+selectedEmojis.splice(i, 1);
+```
+
+The 1 only means we want to remove 1 thing from our array.
+
+My code looks like this:
+
+![Imgur](http://i.imgur.com/6i4Cm6z.png)
+
+#6. Limit to 2 Emojis
+
+Finally for today, we want to only allow people to select a maximum of two emojis. We can do that by checking how many emojis we have in our `selectedEmojis` array before we add anything like this:
+
+```js
+if(selectedEmojis.length < 2){
+  
+}
+```
+
+You also need to remember to only set that emoji to be selected if it got added to the array.
+
+My code looks like this:
+
+![Imgur](http://i.imgur.com/OiMH5Zu.png)
+
+#7. WAIT!
+
+Before we finish - we need to make sure that in our "reset" button code we clear all the selected emojis.
+
+```js
+selectedEmojis = [];
+```
+
+My reset button code looks like this:
+
+![Imgur](http://i.imgur.com/Be5T38o.png)
+
+#8. Finishing
+
+Before you move onto the next worksheet make sure you have an array of only two selected emojis!
+
+:star: When you've finished - don't forget to save your JSFiddle and send us your link above. :star2:
+
