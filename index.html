@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Emojiairaphael4 by JohnReeves</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Emojiairaphael4</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/JohnReeves/EmojiAIRaphael4" class="btn">View on GitHub</a>
+      <a href="https://github.com/JohnReeves/EmojiAIRaphael4/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/JohnReeves/EmojiAIRaphael4/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="1-last-worksheet" class="anchor" href="#1-last-worksheet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Last Worksheet</h1>
+
+<p><img src="http://i.imgur.com/zK4xZhV.png" alt="Imgur"></p>
+
+<p>Find and open your JSFiddle link from last week - as we're going to be making a lot more emojis today!</p>
+
+<h1>
+<a id="2-face-click" class="anchor" href="#2-face-click" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Face Click</h1>
+
+<p>First we're going to make it so we can click on our emoji face to "select" it. We've already got a click event on our reset button so our faceClick should look something like (write this below where we create the <code>faceShape</code>) :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">faceShape</span>.<span class="pl-c1">click</span>( <span class="pl-k">function</span>() {
+
+    });</pre></div>
+
+<p>Next - we can change the attributes of our face shape when we click it to make it look selected - I've set mine to have a green outline like this:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">faceShape</span>.<span class="pl-en">attr</span>(<span class="pl-s"><span class="pl-pds">"</span>stroke-width<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>5<span class="pl-pds">"</span></span>);
+<span class="pl-smi">faceShape</span>.<span class="pl-en">attr</span>(<span class="pl-s"><span class="pl-pds">"</span>stroke<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>#8BC34A<span class="pl-pds">"</span></span>);</pre></div>
+
+<p>My code looks like this:</p>
+
+<p><img src="http://i.imgur.com/BvBgrzZ.png" alt="Imgur"></p>
+
+<h1>
+<a id="3-select-and-de-select" class="anchor" href="#3-select-and-de-select" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3 Select and De-select</h1>
+
+<p>Next we want to be able to deselect the shape - so we can add a property into our <code>emoji</code> of <code>selected</code>. Before we set the click function we know it's not selected:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">emoji</span>.<span class="pl-c1">selected</span> <span class="pl-k">=</span> <span class="pl-c1">false</span>;</pre></div>
+
+<p>We can then change the stroke and stroke-width attributes between black and green like this:</p>
+
+<div class="highlight highlight-source-js"><pre> <span class="pl-k">if</span>(<span class="pl-smi">emoji</span>.<span class="pl-c1">selected</span> <span class="pl-k">==</span> <span class="pl-c1">true</span>){
+  <span class="pl-c">//set not selected</span>
+  <span class="pl-smi">faceShape</span>.<span class="pl-en">attr</span>(<span class="pl-s"><span class="pl-pds">"</span>stroke-width<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>);
+  <span class="pl-smi">faceShape</span>.<span class="pl-en">attr</span>(<span class="pl-s"><span class="pl-pds">"</span>stroke<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span>);
+
+  <span class="pl-smi">emoji</span>.<span class="pl-c1">selected</span> <span class="pl-k">=</span> <span class="pl-c1">false</span>;
+} <span class="pl-k">else</span> {
+  <span class="pl-c">//set selected</span>
+  <span class="pl-smi">faceShape</span>.<span class="pl-en">attr</span>(<span class="pl-s"><span class="pl-pds">"</span>stroke-width<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>5<span class="pl-pds">"</span></span>);
+  <span class="pl-smi">faceShape</span>.<span class="pl-en">attr</span>(<span class="pl-s"><span class="pl-pds">"</span>stroke<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>#8BC34A<span class="pl-pds">"</span></span>);
+
+  <span class="pl-smi">emoji</span>.<span class="pl-c1">selected</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;
+}
+</pre></div>
+
+<p>My code looks like this:</p>
+
+<p><img src="http://i.imgur.com/idKiT4l.png" alt="Imgur"></p>
+
+<h1>
+<a id="4-selected-emojis-array" class="anchor" href="#4-selected-emojis-array" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Selected Emojis Array</h1>
+
+<p>We now need to save what emojis have been selected, we can do this by created a <code>selectedEmojis</code> array below where we create our <code>emojis</code> array:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> selectedEmojis <span class="pl-k">=</span> [];</pre></div>
+
+<p>Then we can add the emoji when the user selects it</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">selectedEmojis</span>.<span class="pl-c1">push</span>(emoji);</pre></div>
+
+<p>Removing an emoji is a little harder...</p>
+
+<h1>
+<a id="5-removing-from-array" class="anchor" href="#5-removing-from-array" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Removing from Array</h1>
+
+<p>There's no "easy" way to remove items from an array - the only option we have in JavaScript is to <code>splice</code> - which means to cut something out. To do this we need to know the index of the thing we want to remove.</p>
+
+<p>To find the index we need to loop through all of our selected emojis and check if they match our current emoji like this :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">for</span> (<span class="pl-k">var</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">selectedEmojis</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>){
+
+  <span class="pl-k">if</span>(emoji <span class="pl-k">==</span> selectedEmojis[i]){
+    <span class="pl-c">//we want to remove this one!</span>
+
+  }
+}</pre></div>
+
+<p>As <code>i</code> currently holds our index, we can chose to <code>splice</code> from there like this:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">selectedEmojis</span>.<span class="pl-c1">splice</span>(i, <span class="pl-c1">1</span>);</pre></div>
+
+<p>The 1 only means we want to remove 1 thing from our array.</p>
+
+<p>My code looks like this:</p>
+
+<p><img src="http://i.imgur.com/6i4Cm6z.png" alt="Imgur"></p>
+
+<h1>
+<a id="6-limit-to-2-emojis" class="anchor" href="#6-limit-to-2-emojis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. Limit to 2 Emojis</h1>
+
+<p>Finally for today, we want to only allow people to select a maximum of two emojis. We can do that by checking how many emojis we have in our <code>selectedEmojis</code> array before we add anything like this:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">if</span>(<span class="pl-smi">selectedEmojis</span>.<span class="pl-c1">length</span> <span class="pl-k">&lt;</span> <span class="pl-c1">2</span>){
+
+}</pre></div>
+
+<p>You also need to remember to only set that emoji to be selected if it got added to the array.</p>
+
+<p>My code looks like this:</p>
+
+<p><img src="http://i.imgur.com/OiMH5Zu.png" alt="Imgur"></p>
+
+<h1>
+<a id="7-wait" class="anchor" href="#7-wait" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. WAIT!</h1>
+
+<p>Before we finish - we need to make sure that in our "reset" button code we clear all the selected emojis.</p>
+
+<div class="highlight highlight-source-js"><pre>selectedEmojis <span class="pl-k">=</span> [];</pre></div>
+
+<p>My reset button code looks like this:</p>
+
+<p><img src="http://i.imgur.com/Be5T38o.png" alt="Imgur"></p>
+
+<h1>
+<a id="8-finishing" class="anchor" href="#8-finishing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>8. Finishing</h1>
+
+<p>Before you move onto the next worksheet make sure you have an array of only two selected emojis!</p>
+
+<p><img class="emoji" title=":star:" alt=":star:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b50.png" height="20" width="20" align="absmiddle"> When you've finished - don't forget to save your JSFiddle and send us your link above. <img class="emoji" title=":star2:" alt=":star2:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f31f.png" height="20" width="20" align="absmiddle"></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/JohnReeves/EmojiAIRaphael4">Emojiairaphael4</a> is maintained by <a href="https://github.com/JohnReeves">JohnReeves</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
